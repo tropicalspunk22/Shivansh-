@@ -1,0 +1,214 @@
+/* ---------- Theme & Fonts ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary: #0b4fb3;   /* blue */
+  --accent: #ff6b4a;    /* coral/orange */
+  --bg: #f4f4f4;        /* light grey page */
+  --card: #ffffff;
+  --text: #222222;
+}
+
+/* ---------- Base (mobile-first) ---------- */
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 4rem; font-size: 100%; }
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+}
+
+h1 { font-size: 2.2rem; line-height: 1.2; margin: 0 0 0.5rem; }
+h2 { font-size: 1.4rem; margin: 0 0 1rem; }
+h3 { font-size: 1rem; margin: 0 0 0.3rem; }
+p  { margin: 0 0 1rem; font-size: 0.9rem; }
+
+/* ---------- Header (Flexbox) ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.7rem 5%;
+  background: var(--primary);
+}
+
+.logo { color: #fff; font-size: 1.1rem; font-weight: 600; text-decoration: none; }
+
+.site-header nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.25rem; }
+
+.site-header nav a {
+  color: #fff;
+  font-size: 0.8rem;
+  text-decoration: none;
+  padding: 0.3rem 0.7rem;
+  border-radius: 0.4rem;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.site-header nav a:hover { background: rgba(255, 255, 255, 0.25); transform: translateY(-2px); }
+
+/* ---------- Hero (Flexbox) ---------- */
+.hero {
+  display: flex;
+  flex-direction: column-reverse;   /* image first on mobile */
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+  padding: 2rem 5%;
+  animation: fadeIn 1s ease both;
+}
+
+.hero-text { flex: 1; }
+.hero-text p { color: #555; font-size: 0.85rem; }
+
+.hero-img {
+  width: 55%;
+  max-width: 17rem;
+  border-radius: 50%;
+  box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.2);
+}
+
+/* Color-changing keyframe animation */
+.highlight { color: var(--accent); animation: colorShift 4s linear infinite; }
+
+@keyframes colorShift {
+  0%   { color: #ff6b4a; }
+  33%  { color: #0b4fb3; }
+  66%  { color: #16a34a; }
+  100% { color: #ff6b4a; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(1.5rem); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Sections ---------- */
+.section {
+  padding: 1.5rem 5%;
+  animation: fadeIn 0.9s ease both;
+}
+
+.section > p { text-align: justify; font-size: 0.75rem; }
+
+/* ---------- Grid (skills & projects cards) ---------- */
+.grid { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+
+.card {
+  padding: 1.2rem;
+  border-radius: 0.5rem;
+  background: var(--card);
+  text-align: center;
+  box-shadow: 0 0.1rem 0.5rem rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover { transform: translateY(-0.4rem) scale(1.03); box-shadow: 0 0.6rem 1.2rem rgba(0, 0, 0, 0.2); }
+.card p { margin: 0; font-size: 0.75rem; }
+
+/* Skills: blue cards */
+.skills-grid .card { background: var(--primary); color: #fff; padding: 1.4rem 1rem; }
+
+/* Projects: tall white cards in one centered column */
+.projects-grid { width: 100%; max-width: 30rem; margin: 0 auto; }
+.project { min-height: 9rem; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  border: 0;
+  border-radius: 0.3rem;
+  background: var(--primary);
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.8rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover { background: var(--accent); transform: scale(1.06); }
+
+/* ---------- Contact form ---------- */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  width: 100%;
+  max-width: 20rem;
+  margin: 0 auto;
+  padding: 1rem;
+  background: var(--card);
+  border-radius: 0.3rem;
+  box-shadow: 0 0.1rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+.contact-form label { font-size: 0.7rem; }
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.4rem;
+  border: 1px solid var(--primary);
+  border-radius: 0.2rem;
+  font-family: inherit;
+  font-size: 0.75rem;
+  transition: box-shadow 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus { outline: none; box-shadow: 0 0 0 0.2rem rgba(11, 79, 179, 0.25); }
+
+.contact-form .btn { width: 100%; margin-top: 0.4rem; }
+
+/* ---------- Footer (Flexbox) ---------- */
+.site-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 2rem;
+  padding: 0.8rem 5%;
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.7rem;
+}
+
+.site-footer p { margin: 0; font-size: inherit; }
+.site-footer ul { display: flex; gap: 1rem; margin: 0; padding: 0; list-style: none; }
+.site-footer a { color: #fff; text-decoration: none; transition: color 0.3s; }
+.site-footer a:hover { color: var(--accent); }
+
+/* ---------- Back to Top (fixed) ---------- */
+.back-to-top { position: fixed; right: 1.5rem; bottom: 1.5rem; font-size: 0.7rem; }
+
+/* ---------- Tablet (min 768px) ---------- */
+@media (min-width: 48em) {
+  h1 { font-size: 3rem; }
+  h2 { font-size: 1.6rem; }
+  .site-header { flex-direction: row; justify-content: space-between; padding: 0.8rem 3%; }
+  .skills-grid { grid-template-columns: repeat(3, 1fr); }
+  .hero { padding: 2.5rem 3%; }
+  .section { padding: 1.5rem 3%; }
+}
+
+/* ---------- Desktop (min 1024px) ---------- */
+@media (min-width: 64em) {
+  h1 { font-size: 3.6rem; }
+  .hero { flex-direction: row; text-align: left; justify-content: space-between; }
+  .hero-img { width: 28%; }
+  .skills-grid { padding: 0 3%; }
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
